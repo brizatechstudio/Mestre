@@ -1,4 +1,4 @@
-const VERSION = 'mestre-1.6.1'
+const VERSION = 'mestre-1.6.3'
 const APP_CACHE = `${VERSION}-app`
 const RUNTIME_CACHE = `${VERSION}-runtime`
 const APP_SHELL = [
