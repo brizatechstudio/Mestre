@@ -1,0 +1,4 @@
+project_id = "mestre-orcamentos"
+
+[functions.mestre-storage]
+verify_jwt = false
