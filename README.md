@@ -1,4 +1,4 @@
-# MESTRE Orçamentos 1.5.3
+# MESTRE Orçamentos 1.6.1
 
 Sistema web/PWA responsivo para autônomos e prestadores de serviço criarem orçamentos, ordens de serviço, recibos e acompanharem custos.
 
@@ -9,6 +9,7 @@ Sistema web/PWA responsivo para autônomos e prestadores de serviço criarem or�
 - **Supabase Storage** — logos e fotos dos serviços;
 - **Supabase Edge Function** — valida o ID token Firebase antes de operar no Storage;
 - **PWA** — instalável no Android/iOS/desktop a partir do mesmo frontend;
+- **Android nativo** — projeto Capacitor pronto para abrir no Android Studio e gerar APK/AAB;
 - **jsPDF sob demanda** — gerador carregado somente quando necessário;
 - **Rewarded Ads / Pro** — voz e PDF podem ser monetizados sem limitar a quantidade de orçamentos.
 
@@ -39,6 +40,8 @@ npm run verify
 ```
 
 Depois siga `SETUP_CHECKLIST.md`. Enquanto `VITE_LOGIN_ENABLED=false`, o app abre em **prévia local sem tela de login** e não inicia o Firebase. Para produção, altere para `true` e use `VITE_BACKEND_MODE=firebase`.
+
+Para a versão Android, consulte `ANDROID.md`. Após instalar o Android Studio/SDK, execute `npm run android:open`.
 
 ## Arquivos para copiar nos serviços
 

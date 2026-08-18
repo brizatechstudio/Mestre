@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { Capacitor } from '@capacitor/core'
 
 type InstallChoice = { outcome: 'accepted' | 'dismissed'; platform?: string }
 
@@ -9,6 +10,7 @@ type BeforeInstallPromptEvent = Event & {
 
 function detectStandalone() {
   if (typeof window === 'undefined') return false
+  if (Capacitor.isNativePlatform()) return true
   const navigatorStandalone = 'standalone' in window.navigator && Boolean((window.navigator as Navigator & { standalone?: boolean }).standalone)
   return window.matchMedia('(display-mode: standalone)').matches || navigatorStandalone
 }
@@ -22,7 +24,9 @@ function detectIos() {
 }
 
 export function registerPwaServiceWorker() {
-  if (!import.meta.env.PROD || !('serviceWorker' in navigator)) return
+  // O container Android já entrega o bundle localmente. Registrar o service
+  // worker nele causaria cache duplicado e não traz benefício ao aplicativo.
+  if (Capacitor.isNativePlatform() || !import.meta.env.PROD || !('serviceWorker' in navigator)) return
   window.addEventListener('load', () => {
     const hadController = Boolean(navigator.serviceWorker.controller)
     let refreshing = false

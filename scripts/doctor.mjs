@@ -65,6 +65,8 @@ ok('Ícone PWA 192 presente', exists('public/icons/icon-192.png'))
 ok('Ícone PWA 512 presente', exists('public/icons/icon-512.png'))
 ok('Ícone maskable presente', exists('public/icons/icon-maskable-512.png'))
 ok('Apple Touch Icon presente', exists('public/icons/apple-touch-icon.png'))
+ok('Configuração Capacitor presente', exists('capacitor.config.ts'))
+ok('Projeto Android nativo presente', exists('android/app/build.gradle'))
 
 if (exists('public/manifest.webmanifest')) {
   try {
@@ -80,7 +82,7 @@ ok('Google Rewarded Ad Unit configurado', env.VITE_GOOGLE_REWARDED_AD_UNIT_PATH,
 ok('Google Banner Ad Unit configurado', env.VITE_GOOGLE_BANNER_AD_UNIT_PATH, true)
 ok('Checkout Pro configurado', env.VITE_PRO_CHECKOUT_URL, true)
 
-console.log('\nMESTRE 1.5.3 — diagnóstico de configuração\n')
+console.log('\nMESTRE 1.6.1 — diagnóstico de configuração\n')
 if (!loginEnabled) console.log('Modo atual: PRÉVIA LOCAL — tela de login desativada e Firebase não é iniciado.\n')
 for (const item of results) {
   const mark = item.condition ? 'OK ' : item.optional ? 'AVISO' : 'ERRO '

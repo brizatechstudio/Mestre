@@ -1,4 +1,4 @@
-# MESTRE 1.5.3 — PWA / instalação no celular
+# MESTRE 1.6.1 — PWA / instalação no celular
 
 O MESTRE agora é uma Progressive Web App (PWA). O mesmo projeto continua funcionando no navegador desktop e mobile, mas também pode ser instalado na tela inicial sem criar um APK separado.
 
@@ -54,7 +54,7 @@ Abra o MESTRE no Safari e use **Compartilhar > Adicionar à Tela de Início**. O
 
 ## Atualizações
 
-`public/sw.js` usa um cache versionado (`mestre-1.5.3`). Ao publicar uma versão futura, altere o valor `VERSION` para que os caches antigos sejam removidos na ativação do novo service worker.
+`public/sw.js` usa um cache versionado (`mestre-1.6.1`). Ao publicar uma versão futura, altere o valor `VERSION` para que os caches antigos sejam removidos na ativação do novo service worker.
 
 
 ## Anúncios na PWA

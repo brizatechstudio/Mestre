@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MESTRE</string>
+    <string name="title_activity_main">MESTRE</string>
+    <string name="package_name">com.mestre.orcamentos</string>
+    <string name="custom_url_scheme">com.mestre.orcamentos</string>
+</resources>

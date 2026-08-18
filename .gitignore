@@ -10,4 +10,8 @@ supabase/.temp/
 supabase/.env
 supabase/.env.*
 !supabase/.env.example
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
 .DS_Store

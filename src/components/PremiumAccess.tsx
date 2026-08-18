@@ -1,4 +1,6 @@
 import { createContext, useCallback, useContext, useMemo, useRef, useState, type ReactNode } from 'react'
+import { Browser } from '@capacitor/browser'
+import { Capacitor } from '@capacitor/core'
 import { Icon } from './Icon'
 import { Modal } from './Modal'
 import { appEnv, rewardedAdsConfigured } from '../lib/env'
@@ -83,9 +85,18 @@ export function PremiumProvider({ entitlement = fallbackEntitlement, children }:
     else setMessage('Não foi possível carregar o anúncio. Verifique sua conexão e tente novamente.')
   }
 
-  const openPro = () => {
+  const openPro = async () => {
     if (!appEnv.billing.proCheckoutUrl) {
       setMessage('O link de assinatura ainda não foi configurado. Preencha VITE_PRO_CHECKOUT_URL quando definir o meio de pagamento.')
+      return
+    }
+    if (Capacitor.isNativePlatform()) {
+      try {
+        await Browser.open({ url: appEnv.billing.proCheckoutUrl })
+      } catch (error) {
+        console.error(error)
+        setMessage('Não foi possível abrir o checkout. Tente novamente em instantes.')
+      }
       return
     }
     window.open(appEnv.billing.proCheckoutUrl, '_blank', 'noopener,noreferrer')
@@ -102,7 +113,7 @@ export function PremiumProvider({ entitlement = fallbackEntitlement, children }:
       onClose={() => { if (!watching) settle(false) }}
       actions={<>
         <button className="button button--ghost" onClick={() => settle(false)} disabled={watching}>Agora não</button>
-        <button className="button button--soft" onClick={openPro} disabled={watching}><Icon name="star" size={16}/> Conhecer Pro</button>
+        <button className="button button--soft" onClick={() => void openPro()} disabled={watching}><Icon name="star" size={16}/> Conhecer Pro</button>
         <button className="button button--primary" onClick={() => void watchAd()} disabled={watching}><Icon name="play" size={16}/> {watching ? 'Carregando...' : 'Assistir anúncio e liberar'}</button>
       </>}
     >
